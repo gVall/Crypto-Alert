@@ -192,3 +192,9 @@ async def verificar_ativos(apiK):
         # Delay entre as requisições
         time.sleep(5)
 ```
+Para gerar um executável do código, basta digitar no terminal:
+English: To generate an executable file, simply run the following command in your terminal:
+
+```python
+pyinstaller --onefile CoinGeckoAlert.py
+```
