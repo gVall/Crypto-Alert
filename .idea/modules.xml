@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CryptoAlert.iml" filepath="$PROJECT_DIR$/.idea/CryptoAlert.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/gitCrypto.iml" filepath="$PROJECT_DIR$/.idea/gitCrypto.iml" />
     </modules>
   </component>
 </project>
