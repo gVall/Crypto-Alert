@@ -4,15 +4,13 @@ from bs4 import BeautifulSoup
 from telegram import Bot
 import time
 import asyncio
-import re
 
 # Mantém no máximo os 2 últimos preços de cada ativo
 historico_valores = {}
 
 def check_asset_variation(asset_code: str) -> list:
-    """
-    Coleta status, variação percentual e preço atual do ativo.
-    """
+    # Coleta status, variação percentual e preço atual do ativo.
+
     url = f"https://www.google.com/finance/quote/{asset_code}"
 
     options = Options()
@@ -62,11 +60,13 @@ def check_asset_variation(asset_code: str) -> list:
             # Remove símbolos de moeda e espaços
             for simbolo in ['R$', '$', '€', '£']:
                 current_price_text = current_price_text.replace(simbolo, '')
+
             current_price_text = current_price_text.strip()
 
             # Remove pontos de milhar (exemplo: transforma 13.725,00 em 13725,00)
             # Mantemos apenas o último separador (que é a vírgula decimal)
             partes = current_price_text.split(',')
+
             if len(partes) > 1:
                 # Remove os pontos da parte inteira
                 parte_inteira = partes[0].replace('.', '')
@@ -92,8 +92,8 @@ def check_asset_variation(asset_code: str) -> list:
         driver.quit()
 
 async def enviar_mensagem(mensg):
-    bot_token = ''
-    chat_id = ''
+    bot_token = '{Key bot telegram}'
+    chat_id = '{Key chat id telegram}'
     bot = Bot(token=bot_token)
     await bot.send_message(chat_id=chat_id, text=mensg)
 
@@ -118,6 +118,7 @@ async def main():
             # Cálculo da variação de preço
             price_variation = "N/A"
             price_variation_percent = "N/A"
+
             if len(historico_valores[asset_code]) == 2:
                 old_price, new_price = historico_valores[asset_code]
                 price_diff = new_price - old_price
